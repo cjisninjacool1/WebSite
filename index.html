@@ -1,6 +1,103 @@
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
 <header>
   <title>QrCode Maker</title>
-  <script src=""></script>
-  <script>console.log("Hello")</script>
-  Hello World
+  <link rel="stylesheet" href="style.css">
+
 </header>
+<div class="form">
+  <h1>QR Code Maker</h1>
+
+  <form>
+    <input type="url" id="website" name="website" placeholder="Text or Link (Required)" required />
+    <input type="url" id="LightColor" name="website" placeholder="LightColor (Optional)" required><input id = "LightColorPicker"type="color" /></input>
+    <br>
+    <br>
+    <input type="url" id="DarkColor" name="website" placeholder="DarkColor (Optional)" required /><input id = "DarkColorPicker"type="color" /></input>
+    <br>
+    <br>
+    <button type="button" onclick="generateQRCode()">
+      Generate QR Code
+    </button>
+  </form>
+  <input type="range" min="1" max="100" value="50" class="slider" id="Height">
+  <div id = "HeightValue"></div>
+  <input type="range" min="1" max="100" value="50" class="slider" id="Width">
+  <div id = "WidthValue"></div>
+  <div id="qrcode-container">
+    <div id="qrcode" class="qrcode"></div>
+    <h4>With some styles</h4>
+    <div id="qrcode-2" class="qrcode"></div>
+  </div>
+
+  <script>
+    /*Display Slider Values*/
+var sliderone = document.getElementById("Height");
+sliderone.value = 28
+var Labelone = document.getElementById("HeightValue");
+Labelone.innerHTML = "Height: " +sliderone.value;
+
+sliderone.oninput = function() {
+    Labelone.innerHTML = "Height: " + this.value;
+}
+
+var slidertwo = document.getElementById("Width");
+slidertwo.value = 28
+var Labeltwo = document.getElementById("WidthValue");
+Labeltwo.innerHTML = "Width: " + slidertwo.value;
+
+
+slidertwo.oninput = function() {
+    Labeltwo.innerHTML = "Width: "+ this.value;
+}
+
+/*use color picker*/
+var LightColorPicker = document.getElementById("LightColorPicker")
+var LightColorinput = document.getElementById("LightColor")
+LightColorPicker.oninput = function(){
+    LightColorinput.value = LightColorPicker.value
+}
+/* use dark color */
+var DarkColorPicker = document.getElementById("DarkColorPicker")
+var DarlColorinput = document.getElementById("DarkColor")
+DarkColorPicker.oninput = function(){
+    DarlColorinput.value = DarkColorPicker.value
+}
+function generateQRCode() {
+      let website = document.getElementById("website").value;
+
+      if (website) {
+        let qrcodeContainer = document.getElementById("qrcode");
+        let Height = document.getElementById("Height").value * 10;
+        let Width = document.getElementById("Width").value * 10;
+        qrcodeContainer.innerHTML = "";
+        new QRCode(qrcodeContainer, website);
+        let darkColor = document.getElementById("DarkColor").value;
+        let lightcolor = document.getElementById("LightColor").value;
+
+        
+
+        /*With some styles*/
+        let qrcodeContainer2 = document.getElementById("qrcode-2");
+        qrcodeContainer2.innerHTML = "";
+        if (darkColor==false){
+            darkColor = "#000000"
+        }
+        if (lightcolor == false){
+            lightcolor = "#ffffff"
+        }
+        new QRCode(qrcodeContainer2, {
+          text: website,
+          width: Width,
+          height: Height,
+          colorDark: darkColor,
+          colorLight: lightcolor,
+          correctLevel: QRCode.CorrectLevel.H
+        });
+        document.getElementById("qrcode-container").style.display = "block";
+      } else {
+        alert("Please enter a valid URL");
+      }
+    }
+  </script>
+</div>
