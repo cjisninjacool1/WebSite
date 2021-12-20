@@ -5,6 +5,103 @@
   <link rel="stylesheet" href="style.css">
 
 </header>
+<style>
+  .form {
+    font-family: Helvetica, sans-serif;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 16px;
+    background: #f7f7f7;
+  }
+  .form h1 {
+    background: blue;
+    padding: 20px 0;
+    font-weight: 300;
+    text-align: center;
+    color: #fff;
+    margin: -16px -16px 16px -16px;
+    font-size:  25px;
+  }
+  .form input[type="text"],
+  .form input[type="url"] {
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+    padding: 3%;
+    color: #555;
+  }
+  .form input[type="text"]:focus,
+  .form input[type="url"]:focus {
+    box-shadow: 0 0 5px blue;
+    padding: 3%;
+    border: 1px solid blue;
+  }
+  
+  .form button {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 150px;
+    margin: 0 auto;
+    padding: 3%;
+    background: blue;
+    border-bottom: 2px solid #5868bf;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  .form button:hover {
+    background: rgba(88,104,191, 0.5);
+  }
+  #qrcode-container{
+      display:none;
+  }
+  
+  .qrcode{
+    padding: 16px;
+  }
+  .qrcode img{
+    margin: 0 auto;
+  }
+  .slidecontainer {
+    width: 100%;
+  }
+  
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: blue;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: blue;
+    cursor: pointer;
+  }
+</style>
 <div class="form">
   <h1>QR Code Maker</h1>
 
